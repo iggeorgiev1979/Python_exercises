@@ -38,7 +38,6 @@ def insert_bomb(matrix: list, mine: str):
     if not row == 0 and not col == 0:
         if not matrix[row - 1][col - 1] == "*":
             matrix[row - 1][col - 1] += 1
-
     if not row == len(matrix) - 1 and not col == len(matrix) - 1:
         if not matrix[row + 1][col + 1] == "*":
             matrix[row + 1][col + 1] += 1
