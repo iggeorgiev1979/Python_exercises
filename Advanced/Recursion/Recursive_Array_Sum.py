@@ -1,8 +1,7 @@
-def sum_numbers(numbers: list, n=0, result=0):
+def sum_numbers(numbers: list, n=0):
     if n < len(numbers):
-        result += numbers[n]
-        return sum_numbers(numbers, n + 1, result)
-    return result
+        return numbers[n] + sum_numbers(numbers, n + 1)
+    return 0
 
 
-print(sum_numbers([-1, 0, 1]))
+print(sum_numbers([1, 2, 3, 4]))
