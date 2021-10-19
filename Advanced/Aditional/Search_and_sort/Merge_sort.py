@@ -23,5 +23,5 @@ def merge_sort(symbols: list):
     return merge(first_section, second_section)
 
 
-symbols_list = ["b", "a", "i", "c"]
+symbols_list = [5, 4, 3, 2, 1]
 print(merge_sort(symbols_list))
