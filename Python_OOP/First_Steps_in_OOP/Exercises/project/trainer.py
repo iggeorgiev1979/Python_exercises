@@ -1,5 +1,5 @@
-from project.pokemon import Pokemon
-# from pokemon import Pokemon
+# from project.pokemon import Pokemon
+from pokemon import Pokemon
 
 
 class Trainer:
@@ -24,18 +24,18 @@ class Trainer:
     def trainer_data(self):
         pokemon_details = []
         for el in self.pokemons:
-            pokemon_details.append(f" - {el.pokemon_details()}")
+            pokemon_details.append(f"- {el.pokemon_details()}")
         details = "\n".join(pokemon_details)
         return f"Pokemon Trainer {self.name}\nPokemon count {len(self.pokemons)}\n{details}"
 
 
-# pokemon = Pokemon("Pikachu", 90)
-# print(pokemon.pokemon_details())
-# trainer = Trainer("Ash")
-# print(trainer.add_pokemon(pokemon))
-# second_pokemon = Pokemon("Charizard", 110)
-# print(trainer.add_pokemon(second_pokemon))
-# print(trainer.add_pokemon(second_pokemon))
-# print(trainer.release_pokemon("Pikachu"))
-# print(trainer.release_pokemon("Pikachu"))
-# print(trainer.trainer_data())
+pokemon = Pokemon("Pikachu", 90)
+print(pokemon.pokemon_details())
+trainer = Trainer("Ash")
+print(trainer.add_pokemon(pokemon))
+second_pokemon = Pokemon("Charizard", 110)
+print(trainer.add_pokemon(second_pokemon))
+print(trainer.add_pokemon(second_pokemon))
+print(trainer.release_pokemon("Pikachu"))
+print(trainer.release_pokemon("Pikachu"))
+print(trainer.trainer_data())
