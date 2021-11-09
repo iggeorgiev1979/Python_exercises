@@ -3,15 +3,25 @@ class EncryptionGenerator:
         self.text = text
 
     def __add__(self, other):
-        if not isinstance(other, int):
+        if not self._is_number(other):
             raise ValueError("You must add a number.")
+        return self._encrypt(other)
 
+    @staticmethod
+    def _is_number(symbol):
+        return type(symbol) == int
+
+    def _encrypt(self, number: int):
         result = ""
         for el in self.text:
-            index = ord(el) - 32
-            new_index = (index + other) % 95
-            result += chr(32 + new_index)
+            result += chr(self.generate_the_ascii_code(el, number))
         return result
+
+    @staticmethod
+    def generate_the_ascii_code(symbol: str, number):
+        index = ord(symbol) - 32
+        new_index = (index + number) % 95
+        return 32 + new_index
 
 
 example = EncryptionGenerator('Super-Secret Message')
