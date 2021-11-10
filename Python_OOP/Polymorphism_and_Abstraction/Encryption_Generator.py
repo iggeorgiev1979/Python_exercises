@@ -3,13 +3,9 @@ class EncryptionGenerator:
         self.text = text
 
     def __add__(self, other):
-        if not self._is_number(other):
+        if not isinstance(other, int):
             raise ValueError("You must add a number.")
         return self._encrypt(other)
-
-    @staticmethod
-    def _is_number(symbol):
-        return type(symbol) == int
 
     def _encrypt(self, number: int):
         result = ""
