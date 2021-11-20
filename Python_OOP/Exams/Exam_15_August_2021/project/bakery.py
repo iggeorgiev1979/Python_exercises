@@ -11,7 +11,7 @@ class Bakery:
         self.name = name
         self.food_menu = []
         self.drinks_menu = []
-        self.table_repository = []
+        self.tables_repository = []
         self.total_income = 0
 
     @property
@@ -81,14 +81,14 @@ class Bakery:
     def add_table(self, table_type, table_number, capacity):
         new_table = self.create_table(table_type, table_number, capacity)
         if new_table:
-            number_exists = self.search_by_number(table_number, self.table_repository)
+            number_exists = self.search_by_number(table_number, self.tables_repository)
             if number_exists:
-                raise f"Table {table_number} is already in the bakery!"
-            self.table_repository.append(new_table)
+                raise Exception(f"Table {table_number} is already in the bakery!")
+            self.tables_repository.append(new_table)
             return f"Added table number {table_number} in the bakery"
 
     def reserve_table(self, number_of_people):
-        for table in self.table_repository:
+        for table in self.tables_repository:
             if table.capacity >= number_of_people and not table.is_reserved:
                 table.reserve(number_of_people)
                 return f"Table {table.table_number} has been reserved for {number_of_people} people"
@@ -96,7 +96,7 @@ class Bakery:
 
     def order_food(self, table_number, *args):
         try:
-            table = [table for table in self.table_repository if table.table_number == table_number][0]
+            table = [table for table in self.tables_repository if table.table_number == table_number][0]
             unordered_food = []
             for food_name in args:
                 try:
@@ -116,7 +116,7 @@ class Bakery:
 
     def order_drink(self, table_number, *args):
         try:
-            table = [table for table in self.table_repository if table.table_number == table_number][0]
+            table = [table for table in self.tables_repository if table.table_number == table_number][0]
             unordered_drinks = []
             for drink_name in args:
                 try:
@@ -136,7 +136,7 @@ class Bakery:
 
     def leave_table(self, table_number):
         try:
-            table = [table for table in self.table_repository if table.table_number == table_number][0]
+            table = [table for table in self.tables_repository if table.table_number == table_number][0]
             if table.is_reserved:
                 bill = table.get_bill()
                 table.clear()
@@ -147,7 +147,7 @@ class Bakery:
             pass
 
     def get_free_tables_info(self):
-        info = [table.free_table_info() for table in self.table_repository if not table.is_reserved]
+        info = [table.free_table_info() for table in self.tables_repository if not table.is_reserved]
         return "\n".join(info)
 
     def get_total_income(self):

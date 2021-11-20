@@ -16,16 +16,8 @@ class InsideTable(Table):
 
     @table_number.setter
     def table_number(self, value):
-        if not value >= 1 and not value <= 50:
+        if value < 1 or value > 50:
             raise ValueError("Inside table's number must be between 1 and 50 inclusive!")
         self.__table_number = value
 
-    # @property
-    # def capacity(self):
-    #     return self.__capacity
-    #
-    # @capacity.setter
-    # def capacity(self, value):
-    #     if value <= 0:
-    #         raise ValueError("Capacity has to be greater than 0!")
-    #     self.__capacity = value
+

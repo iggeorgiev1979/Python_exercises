@@ -5,8 +5,8 @@ class BakedFood(ABC):
     @abstractmethod
     def __init__(self, name: str, portion: float, price: float):
         self.name = name
-        self.portion = portion
-        self.price = price
+        self.portion = float(portion)
+        self.price = float(price)
 
     @property
     def name(self):
@@ -16,7 +16,7 @@ class BakedFood(ABC):
     def name(self, value):
         tmp = value.strip()
         if not tmp:
-            raise Exception("Name cannot be empty string or white space!")
+            raise ValueError("Name cannot be empty string or white space!")
         self.__name = value
 
     @property

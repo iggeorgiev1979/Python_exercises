@@ -5,8 +5,8 @@ class Drink(ABC):
     @abstractmethod
     def __init__(self, name: str, portion: float, price: float, brand: str):
         self.name = name
-        self.portion = portion
-        self.price = price
+        self.portion = float(portion)
+        self.price = float(price)
         self.brand = brand
 
     @property
