@@ -1,8 +1,17 @@
 def cache(func):
-    pass
+    log = {}
+    def wrapper(number):
+        if number in log.keys():
+            return log[number]
+        log[number] = func(number)
+        return log[number]
+    
+    wrapper.log = log
+    
+    return wrapper
 
 
-
+@cache
 def fibonacci(n):
     if n < 2:
         return n
