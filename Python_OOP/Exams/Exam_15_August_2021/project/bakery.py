@@ -92,19 +92,21 @@ class Bakery:
             if table.capacity >= number_of_people and not table.is_reserved:
                 table.reserve(number_of_people)
                 return f"Table {table.table_number} has been reserved for {number_of_people} people"
-            return f"No available table for {number_of_people} people"
+        return f"No available table for {number_of_people} people"
 
     def order_food(self, table_number, *args):
         try:
             table = [table for table in self.tables_repository if table.table_number == table_number][0]
             unordered_food = []
+            ordered_food = []
             for food_name in args:
                 try:
                     food = [food for food in self.food_menu if food.name == food_name][0]
                     table.order_food(food)
+                    ordered_food.append(food)
                 except IndexError:
                     unordered_food.append(food_name)
-            ordered_food_list = "\n".join([repr(ordered_food) for ordered_food in table.food_orders])
+            ordered_food_list = "\n".join([repr(ordered) for ordered in ordered_food])
             unordered_food_list = "\n".join(unordered_food)
             return f"Table {table_number} ordered:\n" \
                    f"{ordered_food_list}\n" \
@@ -118,13 +120,15 @@ class Bakery:
         try:
             table = [table for table in self.tables_repository if table.table_number == table_number][0]
             unordered_drinks = []
+            ordered_drinks = []
             for drink_name in args:
                 try:
                     drink = [drink for drink in self.drinks_menu if drink.name == drink_name][0]
                     table.order_drink(drink)
+                    ordered_drinks.append(drink)
                 except IndexError:
                     unordered_drinks.append(drink_name)
-            ordered_drinks_list = "\n".join(repr(ordered_drink) for ordered_drink in table.drink_orders)
+            ordered_drinks_list = "\n".join(repr(ordered) for ordered in ordered_drinks)
             unordered_drinks_list = "\n".join(unordered_drinks)
             return f"Table {table_number} ordered:\n" \
                    f"{ordered_drinks_list}\n" \
@@ -154,7 +158,16 @@ class Bakery:
         return f"Total income: {self.total_income:.2f}lv"
 
 
-
-
-
-
+# bb = Bakery("My")
+# print(bb.add_table("InsideTable", 5, 4))
+# print(bb.add_table("InsideTable", 7, 3))
+# print(bb.add_table("OutsideTable", 53, 6))
+# print(bb.add_food("Cake", "cc", 2.5))
+# print(bb.add_food("Cake", "cc1", 2))
+# print(bb.add_food("Bread", "cc2", 2.5))
+# print(bb.add_food("Cakes", "cc3", 2.5))
+# print(bb.reserve_table(6))
+# print(bb.order_food(53, "cc", "cc1", "cc2", "cc3", "cc4"))
+# print(bb.leave_table(53))
+# print(bb.get_free_tables_info())
+# print(bb.get_total_income())
