@@ -5,7 +5,6 @@ from project.astronaut.astronaut_repository import AstronautRepository
 from project.astronaut.biologist import Biologist
 from project.astronaut.geodesist import Geodesist
 from project.astronaut.meteorologist import Meteorologist
-from project.astronaut.meteorologist import Astronaut
 from project.planet.planet import Planet
 from project.planet.planet_repository import PlanetRepository
 
