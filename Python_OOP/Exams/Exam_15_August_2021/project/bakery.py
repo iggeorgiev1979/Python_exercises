@@ -28,9 +28,9 @@ class Bakery:
     @staticmethod
     def create_food(food_type, food_name, price):
         if food_type == "Bread":
-            return Cake(food_name, price)
-        elif food_type == "Cake":
             return Bread(food_name, price)
+        elif food_type == "Cake":
+            return Cake(food_name, price)
 
     @staticmethod
     def create_drink(drink_type, name, portion, brand):
