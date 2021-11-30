@@ -2,7 +2,6 @@ class Planet:
     def __init__(self, name: str):
         self.name = name
         self.items = []
-        self.counter = 0
 
     @property
     def name(self):
@@ -10,8 +9,7 @@ class Planet:
 
     @name.setter
     def name(self, value):
-        striped_value = value.strip()
-        if not striped_value:
+        if value == '' or value.isspace():
             raise ValueError("Planet name cannot be empty string or whitespace!")
         self.__name = value
 

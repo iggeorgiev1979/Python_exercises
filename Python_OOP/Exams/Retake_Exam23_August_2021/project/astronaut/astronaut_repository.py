@@ -12,6 +12,3 @@ class AstronautRepository:
         searched_astronaut = [astronaut for astronaut in self.astronauts if astronaut.name == name]
         if searched_astronaut:
             return searched_astronaut[0]
-
-    def __getitem__(self, index):
-        return self.astronauts[index]
