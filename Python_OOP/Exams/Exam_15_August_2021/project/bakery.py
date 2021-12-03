@@ -20,8 +20,7 @@ class Bakery:
 
     @name.setter
     def name(self, value):
-        tmp = value.strip()
-        if not tmp:
+        if not value or not value.strip():
             raise ValueError("Name cannot be empty string or white space!")
         self.__name = value
 
@@ -141,11 +140,11 @@ class Bakery:
     def leave_table(self, table_number):
         try:
             table = [table for table in self.tables_repository if table.table_number == table_number][0]
-            if table.is_reserved:
-                bill = table.get_bill()
-                table.clear()
-                self.total_income += bill
-                return f"Table: {table_number}", f"Bill: {bill:.2f}"
+            bill = table.get_bill()
+            table.clear()
+            self.total_income += bill
+            return f'''Table: {table_number}
+Bill: {bill:.2f}'''
 
         except IndexError:
             pass

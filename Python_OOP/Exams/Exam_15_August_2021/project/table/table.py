@@ -22,7 +22,6 @@ class Table(ABC):
         self.__capacity = value
 
     def reserve(self, number_of_people: int):
-        # if number_of_people <= self.capacity and not self.is_reserved:
         self.number_of_people = number_of_people
         self.is_reserved = True
 
@@ -36,8 +35,8 @@ class Table(ABC):
         return sum(drink.price for drink in self.drink_orders) + sum(food.price for food in self.food_orders)
 
     def clear(self):
-        self.food_orders = []
-        self.drink_orders = []
+        self.food_orders.clear()
+        self.drink_orders.clear()
         self.number_of_people = 0
         self.is_reserved = False
 

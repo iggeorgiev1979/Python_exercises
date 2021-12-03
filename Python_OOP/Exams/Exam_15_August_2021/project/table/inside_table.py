@@ -3,12 +3,7 @@ from project.table.table import Table
 
 class InsideTable(Table):
     def __init__(self, table_number: int, capacity: int):
-        self.table_number = table_number
-        self.capacity = capacity
-        self.food_orders = []
-        self.drink_orders = []
-        self.number_of_people = 0
-        self.is_reserved = False
+        super().__init__(table_number, capacity)
 
     @property
     def table_number(self):
